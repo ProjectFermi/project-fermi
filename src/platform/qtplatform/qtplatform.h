@@ -3,7 +3,6 @@
 
 #include "../platform.h"
 #include "../../gameengine/gameengine.h"
-#include "graphicsscene.h"
 
 #include <QGraphicsView>
 #include <QGraphicsScene>

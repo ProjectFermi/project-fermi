@@ -6,27 +6,24 @@ DEFINES += PLATFORM_IS_QT
 HEADERS += \
     platform/platform.h \
     gameengine/gameengine.h \
-    platform/qtplatform/qtplatform.h \
-    platform/qtplatform/graphicsscene.h \
+    platform/graphicsscene.h \
     entity/entity.h \
     entity/ball.h \
     entity/ground.h \
     entity/box.h \
     platform/sprite.h \
-    platform/qtplatform/qtsprite.h
+    macros.h
 
 SOURCES += \
     platform/platform.cpp \
     main.cpp \
     gameengine/gameengine.cpp \
-    platform/qtplatform/qtplatform.cpp \
-    platform/qtplatform/graphicsscene.cpp \
+    platform/graphicsscene.cpp \
     entity/entity.cpp \
     entity/ball.cpp \
     entity/ground.cpp \
     entity/box.cpp \
-    platform/sprite.cpp \
-    platform/qtplatform/qtsprite.cpp
+    platform/sprite.cpp
 
 # Box2D should be placed in a libs/ folder next to src/
 # It is suffixed with -harmattan if it is an ARM build for Nokia N9

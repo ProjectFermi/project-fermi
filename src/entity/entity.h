@@ -6,14 +6,13 @@ class Platform;
 class Sprite;
 #include <Box2D.h>
 
+// Qt includes
+#include <QGraphicsItem>
+
 class Entity
 {
 public:
     Entity(GameEngine *m_engine);
-
-    Sprite* sprite() {
-        return m_sprite;
-    }
 
     b2Body *body() {
         return m_body;
@@ -32,19 +31,20 @@ public:
         return m_fixtureDef;
     }
 
+    virtual void updateGraphics() {
+
+    }
+
 protected:
     GameEngine *m_engine;
     b2World *m_world;
     b2BodyDef *m_bodyDef;
     b2Body *m_body;
     b2Shape *m_shape;
-    Platform *m_platform;
     b2FixtureDef *m_fixtureDef;
 
     double m_width;
     double m_height;
-
-    Sprite *m_sprite;
 };
 
 #endif // ENTITY_H

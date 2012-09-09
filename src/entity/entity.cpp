@@ -5,7 +5,6 @@
 
 Entity::Entity(GameEngine *engine) :
     m_engine(engine),
-    m_world(engine->world()),
-    m_platform(engine->platform())
+    m_world(engine->world())
 {
 }

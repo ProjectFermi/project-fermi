@@ -3,30 +3,11 @@
 #include "gameengine/gameengine.h"
 #include "qtsprite.h"
 
-#include <QApplication>
-#include <iostream>
-#include <QGraphicsRectItem>
-#include <QGraphicsItem>
 #include <math.h>
 
 QtPlatform::QtPlatform(int argc, char* argv[]) :
     Platform(argc, argv)
 {
-
-    timer = new QTimer();
-    qtApp = new QApplication(argc, argv);
-    graphicsView = new QGraphicsView();
-    QGLWidget *glwidget = new QGLWidget(graphicsView);
-    graphicsView->setViewport(glwidget);
-    graphicsView->scale(1,-1);
-
-    connect(timer, SIGNAL(timeout()), SLOT(advanceTimeout()));
-    m_gameEngine = new GameEngine(argc, argv);
-    graphicsScene = new GraphicsScene(this);
-    graphicsScene->setSceneRect(0,0,800,480);
-    graphicsView->setScene(graphicsScene);
-    m_gameEngine->setPlatform(this);
-    m_gameEngine->initBox2D();
 }
 
 /*!

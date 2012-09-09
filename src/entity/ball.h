@@ -7,6 +7,10 @@ class Ball : public Entity
 {
 public:
     Ball(GameEngine *gameEngine, const b2Vec2 &position, double radius);
+
+    void updateGraphics();
+protected:
+    QGraphicsPixmapItem *m_ballPixmap;
 };
 
 #endif // BALL_H

@@ -7,8 +7,17 @@
 #include <Box2D.h>
 #include <vector>
 
-class GameEngine
+// Qt includes
+#include <QObject>
+#include <QTimer>
+#include <QGraphicsView>
+
+// Forward declarations
+class GraphicsScene;
+
+class GameEngine : public QObject
 {
+    Q_OBJECT
 public:
     GameEngine(int argc, char *argv[]);
 
@@ -33,34 +42,46 @@ public:
         return m_engineMode;
     }
 
-    void setPlatform(Platform* platform) {
-        m_platform = platform;
-    }
-
     void initBox2D();
-    void advance();
-    void startGame();
+    void start();
     void redraw();
     b2World *world() {
         return m_world;
     }
 
-    Platform* platform() {
-        return m_platform;
+    void onMouseReleased(int x, int y);
+
+
+    QGraphicsView *graphicsView() {
+        return m_graphicsView;
+    }
+    GraphicsScene *graphicsScene() {
+        return m_graphicsScene;
+    }
+    double scale() {
+        return m_scale;
     }
 
-    void onMouseReleased(int x, int y);
-private:
+    void startGame();
+    ~GameEngine();
+public slots:
+    void advance();
+
+protected:
     EngineMode m_engineMode;
     GameState m_gameState;
 
     b2World *m_world;
 
-    Platform *m_platform;
-
     std::vector<Entity*> entities;
 
     double m_scale;
+
+    QTimer *m_stepTimer;
+    double m_timeStep;
+
+    QGraphicsView *m_graphicsView;
+    GraphicsScene *m_graphicsScene;
 };
 
 #endif // GAMEENGINE_H
